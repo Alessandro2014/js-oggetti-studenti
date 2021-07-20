@@ -5,8 +5,9 @@ Dare la possibilità all’utente, attraverso 3 prompt(), di aggiungere un nuovo
 inserendo nell’ordine: nome, cognome e età.
 */
 
-var display = document.getElementById("student-2");
+var display = document.getElementById("display");
 
+//ARRAY DI STUDENTI
 var students = [
     {   nome : "David", 
         cognome : "Bianchi",
@@ -21,45 +22,34 @@ var students = [
         eta : 30,
     }, 
 ];
-/* 
-var newStudent = {
-    nome : "Joel", 
-    cognome :  "Bougna",
-    eta : 20
-};
 
+//AGGIUNTA NUOVO STUDENTE
+var newName = prompt("Inserisci il tuo nome");
+var newSurname = prompt("Inserisci il tuo cognome");
+var newAge = prompt("Inserisci la tua età");
+
+var newStudent = {
+    nome : newName, 
+    cognome :  newSurname,
+    eta : newAge,
+};
 students.push(newStudent);
-*/
-var content = " ";
-for ( var i = 0; i < students.lenght; i++) {
-    var singleStudent = students[i];
+
+printObjectArray(students, display);
+
+//FUNZIONE PRINT TO OBJET ARRAY
+function printObjectArray(objectArray, targetElement){
+    var content = " ";
+for (var i = 0; i < objectArray.length; i++) {
+    var currentItem = objectArray[i];
     content += "<li>";
 
-    for (var key in singleStudent) {
+    for (var key in currentItem) {
         content += 
-        key + ": " + singleStudent[key] + "<br>";
+        key + ": " + currentItem[key] + "<br>";
     }
     content += "</li>";
 }
-display.innerHTML = content;
+    targetElement.innerHTML = content;
 
-
-/*
-
-for ( var i = 0; i < students.lenght; i++) {
-    var student = students[i];
-    console.log(" nome " + student[i]);
-
-
-    var currentClass = student.students;
-
-    for (var j = 0; j < currentClass.lenght; j++){
-        var currentStudent = currentClass[j];
-        for ( var key in currentStudent) {
-    
-            console.log(key);
-        }
-        
-    }
 }
-*/
